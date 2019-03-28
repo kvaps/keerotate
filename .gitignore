@@ -1,0 +1,6 @@
+*.kdbx
+*.kdbx.old
+*.kdbx.new
+*.key
+*.key.old
+*.key.new

@@ -3,11 +3,11 @@ DIR=${1:-.}
 PASSWORD="a"
 
 find "$DIR" -name '*.kdbx' | while read DB_FILE; do
-  DB_FILE_OLD="$DB_FILE.old"
-  DB_FILE_NEW="$DB_FILE.new"
-  DB_KEY="$(echo "$DB_FILE" | sed 's/.kdbx$/.key/')"
-  DB_KEY_OLD="$DB_KEY.old"
-  DB_KEY_NEW="$DB_KEY.new"
+  DB_FILE_OLD="$(dirname "$DB_FILE")/.$(basename "$DB_FILE").old"
+  DB_FILE_NEW="$(dirname "$DB_FILE")/.$(basename "$DB_FILE").new"
+  DB_KEY="$(dirname "$DB_FILE")/$(basename "$DB_FILE" .kdbx).key"
+  DB_KEY_OLD="$(dirname "$DB_KEY")/.$(basename "$DB_KEY").old"
+  DB_KEY_NEW="$(dirname "$DB_KEY")/.$(basename "$DB_KEY").new"
 
   echo "Processing: $DB_FILE"
   if [ ! -f "$DB_KEY" ]; then
